@@ -4,7 +4,7 @@
   </a>
   <ul class="nav item">
     <% if user_signed_in? %> 
-    <li class="mx-5 pr-5">completados: <%= current_user.todos.where(completed: true).count  %> / <%= Task.all.count %></li>
+    <li class="mx-5 pr-5">Completados <%= current_user.todos.where(completed: true).count  %> / <%= Task.all.count %></li>
       <li>
       <%= link_to "Salir", destroy_user_session_path, method: :delete, class:"btn btn-dark text-light" %>
       </li>
