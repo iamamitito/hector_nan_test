@@ -4,16 +4,16 @@
   </a>
   <ul class="nav item">
     <% if user_signed_in? %> 
-    <li class="nav-item">Completados: <%= current_user.todos.where(completed: true).count  %> / <%= Task.all.count %></li>
-      <li class="nav-item">
-      <%= link_to "Salir", destroy_user_session_path, method: :delete, class:"nav-item nav-link" %>
+    <li class="mx-5 pr-5">completados: <%= current_user.todos.where(completed: true).count  %> / <%= Task.all.count %></li>
+      <li>
+      <%= link_to "Salir", destroy_user_session_path, method: :delete, class:"btn btn-dark text-light" %>
       </li>
       <% else %>
       <li class="nav-item">
-      <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-item nav-link" %>
+      <%= link_to "Iniciar sesión", new_user_session_path, class:"btn btn-dark text-light" %>
       </li>
       <li class="nav-item">
-      <%= link_to "Registro", new_user_registration_path, class:"nav-item nav-link" %>
+      <%= link_to "Registro", new_user_registration_path, class:"btn btn-dark text-light" %>
       <% end %>
       </li>
     </ul>
