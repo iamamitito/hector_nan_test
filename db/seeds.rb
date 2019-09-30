@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Task.destroy_all
+User.destroy_all
 9.times do |i|
+    activities = ["Comer empanadas", "Tomar terremoto", "Encumbrar volantín", "Bailar cueca", "Ir a una fonda", "Salir a bailar", "Jugar al trompo", "Comer pebre", "Dormir"]
     Task.create(
-        name: "Nombre #{i+1}",
-        photo: "https://picsum.photos/id/#{i+6}/500/500"
+        name: "#{activities[i]}",
+        photo: "#{i+1}.jpg"
         )
 end

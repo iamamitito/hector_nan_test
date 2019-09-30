@@ -13,4 +13,12 @@
  *= require_tree .
  *= require_self
  */
- 
+ img {
+  max-block-size: 20rem;
+ }
+ .done_todo img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+
+

@@ -1,17 +1,18 @@
-<nav class="navbar navbar-light text-light bg-dark">
-  <a class="navbar-brand">
-    <h5>18's bucketlist</h5>
+<nav class="navbar navbar-light text-light bg-dark fixed-top">
+  <a class="navbar-brand ml-3">
+    <h5>18's Bucketlist</h5>
   </a>
   <ul class="nav item">
-    <% if user_signed_in? %>
-      <li class="nav-item <%= 'active' if action_name == 'Salir'%>">
+    <% if user_signed_in? %> 
+    <li class="nav-item">Completados: <%= current_user.todos.where(completed: true).count  %> / <%= Task.all.count %></li>
+      <li class="nav-item">
       <%= link_to "Salir", destroy_user_session_path, method: :delete, class:"nav-item nav-link" %>
       </li>
       <% else %>
-      <li class="nav-item <%= 'active' if action_name == 'Iniciar sesión'%>">
+      <li class="nav-item">
       <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-item nav-link" %>
       </li>
-      <li class="nav-item <%= 'active' if action_name == 'Registrarse'%>">
+      <li class="nav-item">
       <%= link_to "Registro", new_user_registration_path, class:"nav-item nav-link" %>
       <% end %>
       </li>

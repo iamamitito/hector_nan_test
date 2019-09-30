@@ -1,9 +1,5 @@
 class TodosController < ApplicationController
-  def index
-    @todos = Todo.all
-    @tasks = Task.all
-  end
-
+  
   def show
     todo = Todo.find(params[:todo_id])
     @task = todo.task

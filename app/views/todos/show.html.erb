@@ -1,15 +1,19 @@
-<h2>Todos#show</h2>
+<br>
+<br>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Usuarios que han completado la tarea</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Task:</strong>
-  <%= @task.name %>
-</p>
-<p>
-  <strong>Task:</strong>
-</p>
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= todo.user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Project:</strong>
-</p>
-
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path, class:'btn btn-warning' %>

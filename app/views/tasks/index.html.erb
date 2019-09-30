@@ -1,27 +1,28 @@
-
+<% if user_signed_in? %> 
+<h1>Mis tareas</h1>
     <div class="body mx-5">
   <% @todos.each_slice(3) do |todos| %>
     <div class="card-deck">
     <% todos.each do |todo| %>
     <%if todo.completed? %>
-    <div class="card">
+    <div class="card my-4">
     <%= image_tag todo.task.photo, class: 'card-img-top img-thumbnail' %>
     <div class="card-body">
       <h5 class="card-title"><%= todo.task.name  %></h5>
-      <%= link_to "Listo", update_todo_path(todo), method: :patch, class: "btn btn-primary" %>
-      <%= link_to 'show', todo_path(todo) %> 
+      <%= link_to "No listo", update_todo_path(todo), method: :patch, class: "btn btn-danger" %>
+      <%= link_to 'Detalle', todo_path(todo), class:'btn btn-light' %> 
      </div>
      <div class="card-footer">
        <small class="text-muted"> <%= time_ago_in_words todo.updated_at %></small>
      </div>
      </div>
      <% else %>
-<div class="card">
+<div class="card done_todo my-4">
     <%= image_tag todo.task.photo, class: 'card-img-top img-thumbnail' %>
     <div class="card-body">
       <h5 class="card-title"><%= todo.task.name  %></h5>
-      <%= link_to "No listo", update_todo_path(todo), method: :patch, class: "btn btn-danger" %>
-      <%= link_to 'show', todo_path(todo) %> 
+      <%= link_to "Listo", update_todo_path(todo), method: :patch, class: "btn btn-primary" %>
+      <%= link_to 'Detalle', todo_path(todo), class:'btn btn-light' %> 
      </div>
      <div class="card-footer">
        <small class="text-muted"> <%= time_ago_in_words todo.updated_at %></small>
@@ -32,3 +33,24 @@
   </div>
   <% end %>
 </div>
+<% else %>
+    <div class="body mx-5">
+  <% @tasks.each_slice(3) do |tasks| %>
+    <div class="card-deck">
+    <% tasks.each do |task| %>
+    <div class="card done_todo my-4">
+    <%= image_tag task.photo, class: 'card-img-top img-thumbnail' %>
+    <div class="card-body">
+      <h5 class="card-title"><%= task.name  %></h5>
+      <%= link_to "Listo", update_todo_path(task), method: :patch, class: "btn btn-primary" %>
+      <%= link_to 'Detalle', todo_path(task), class:'btn btn-light' %> 
+     </div>
+     <div class="card-footer">
+       <small class="text-muted"> <%= time_ago_in_words task.created_at %></small>
+     </div>
+     </div>
+     <% end %>
+  </div>
+  <% end %>
+</div>
+<% end %>
